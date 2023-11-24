@@ -4,22 +4,22 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const app = express();
 
+// URL of database
+const URL = process.env.DATABASE;
+
+const PORT = process.env.DATABASE || 3001;
 
 // dotenv config
 
 dotenv.config({ path: "./.env" });
 
 
-// URL of database
-const URL = process.env.DATABASE;
-
-const PORT = process.env.DATABASE || 3001;
 
 
 // MongoDB connection
 
 mongoose
-  .connect(URL)
+  .connect(process.env.DATABASE)
   .then(console.log("Connection is succesful"))
   .catch((error) => console.log(error));
 
