@@ -1,3 +1,5 @@
+const server = require('http').createServer();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -93,7 +95,7 @@ app.put('/likes', async (req, res) => {
 
 // Listen port number
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
