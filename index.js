@@ -13,7 +13,7 @@ const PORT = process.env.DATABASE || 3001;
 
 // dotenv config
 
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: "./config.env" });
 
 
 
