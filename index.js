@@ -1,27 +1,21 @@
-const server = require('http').createServer();
-
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const app = express();
 
-// URL of database
-const URL = process.env.DATABASE;
-
-const PORT = process.env.DATABASE || 3001;
-
 // dotenv config
-
 dotenv.config({ path: "./config.env" });
 
+const PORT = 3001;
 
-
+// URL of database
+const URL = process.env.DATABASE;
 
 // MongoDB connection
 
 mongoose
-  .connect(process.env.DATABASE)
+  .connect(URL)
   .then(console.log("Connection is succesful"))
   .catch((error) => console.log(error));
 
@@ -75,27 +69,9 @@ app.get("/getbyid/:id", async (req, res)=> {
 
 // To delete the prodduct
 
-// To increase the count 
-
-
-app.put('/likes', async (req, res) => {
-
-  let doc = await Like.findById("default");
-
-  if (!doc) {
-    doc = await Like.create({_id: "default"});
-  }
-
-  doc.likes++;
-  await doc.save();
-
-  res.json(doc);
-
-});
-
 // Listen port number
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
