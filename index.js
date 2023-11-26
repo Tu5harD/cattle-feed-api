@@ -69,6 +69,16 @@ app.get("/getbyid/:id", async (req, res)=> {
 
 // To delete the prodduct
 
+app.delete("/delete/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const deleteData = await UserData.findByIdAndDelete({ _id: id });
+    res.json(deleteData);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 // Listen port number
 
 app.listen(PORT, () => {
