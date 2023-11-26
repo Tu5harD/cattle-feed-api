@@ -75,7 +75,7 @@ app.delete("/delete/:id", async (req, res) => {
     const deleteData = await UserData.findByIdAndDelete({ _id: id });
     res.json(deleteData);
   } catch (error) {
-    console.error(error);
+    console.log(error)
   }
 });
 
